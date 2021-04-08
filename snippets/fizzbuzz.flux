@@ -30,5 +30,5 @@ fn fizzbuzz(n as U128) {
 }
 
 
-// 
+// short and barely readable
 fn fizzbuzz_short(n as U128)->for i in 1->>n{@(("Fizz".repeat(!i%3)+"Buzz".repeat(!i%5))||i);};
