@@ -1,3 +1,5 @@
+// vim: syntax=rust 
+
 /*
 
 vector class example
