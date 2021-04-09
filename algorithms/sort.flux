@@ -21,7 +21,7 @@ fn quicksort(list as List[Any], start=0, stop=length(list)) {
                 right -= 1;
             };
             if left <= right {
-                [ array[left], array[right] ] = array[right], array[left];
+                swap(&list[left], &list[right]);
                 left += 1;
                 right -= 1;
             }

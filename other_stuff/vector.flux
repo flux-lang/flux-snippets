@@ -15,7 +15,7 @@ class Vector {
     init(self, ...values as Float) {
         if not length(values) {
             values = [.0, .0]; // falling back to 2-dimensional zero-vector
-        }
+        };
         self.values = values;
     };
 
