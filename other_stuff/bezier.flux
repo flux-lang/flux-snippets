@@ -19,8 +19,8 @@ fn bezier(points as List[Vector], precision as U32 = 100) as List[Vector] {
 
 
 fn getPoint(points as List[Vector], k as Float) as Vector {
-    if length(points) == 2 {
-        interpolate(controls[i], controls[i + 1], k)
+    if length(points) == 1 {
+        points[0]
     } else {
         getPoint(
             map(
