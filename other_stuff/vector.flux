@@ -188,4 +188,7 @@ class Vector {
         Vector.from_number(other) ** self 
     };
 
-}
+};
+
+
+pub Vector; // making Vector class public so other files can use it 
