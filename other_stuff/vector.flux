@@ -7,14 +7,15 @@ this example shows opfn examples, class usage and initialization
 
 */
 
+const Arithmetic = Union[Vector, Float];
 
 
 class Vector {
-    values as List[Float];
+    values as List[Arithmetic]; 
     length as Float;
     k as Float;
 
-    init(self, ...values as Float) {
+    init(self, ...values as List[Arithmetic]) {
         if not length(values) {
             values = [.0, .0]; // falling back to 2-dimensional zero-vector
         };
@@ -41,14 +42,22 @@ class Vector {
         self / self.length
     };
 
-    opfn self[index as U8] as Float {
+    opfn self[index as U8] as Arithmetic {
         self.values[index]
     };
 
+    opfn self[index as Range] as Vector {
+        Vector(self.values[index])
+    }
+
     // standard function
-    sfn iter(self) as Iterator[Float] {
+    sfn iter(self) as Iterator[Arithmetic] {
         self.values.iter()
     };
+
+    sfn length(self) {
+        length(self.values)
+    }
 
     opfn -self as Vector {
         Vector([-n for n in self])
@@ -59,7 +68,7 @@ class Vector {
     That's the algorithm for vector operations I used in soda and it was really nice to use.
 
     For every index of self, get other[index % length(other)] and perform operation on those two.
-    The result is added as new[i]
+    The result is added as new[index]
 
     Examples (vec[...] is just a simplified written form of Vector([...])):
 
@@ -69,8 +78,8 @@ class Vector {
     vec[1, 2, 3, 4] + vec[1, 2] -> vec[2, 4, 4, 6]
 
     */
-    fn operation(self, other as Vector, op_func as Function) {
-        new_values as List[Float] = [];
+    fn operation(self, other as Vector, op_func as Function) as Vector {
+        new_values as List[Arithmetic] = [];
         for i in -> length(self.values) {
             new_values.add(
                 op_func(
