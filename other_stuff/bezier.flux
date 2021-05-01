@@ -30,8 +30,8 @@ class SimpleBezier {
         } else {
             getPoint(
                 map(
+                    fn(i) -> self.interpolate(controls[i], controls[i + 1], k),
                     Range(length(controls) - 1),
-                    fn(i) -> self.interpolate(controls[i], controls[i + 1], k)
                 ) as List,
                 k
             )

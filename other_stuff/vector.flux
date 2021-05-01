@@ -32,8 +32,8 @@ class Vector {
     get length(self) {
         sum(
             map(
-                self.values, 
-                fn(x) -> x ** 2
+                fn(x) -> x ** 2,
+                self.values,
             )
         ) ** 0.5
     };
